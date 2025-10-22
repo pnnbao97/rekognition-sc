@@ -29,13 +29,10 @@ const Index = () => {
   const handleExampleSelect = useCallback((dataUrl: string, demoResult?: AnalysisResultType) => {
     setSelectedImage(dataUrl);
     
-    // If this is a demo image with pre-analyzed results, set them immediately
     if (demoResult) {
       setResult(demoResult);
-      // For demo image, we don't need to set selectedFile since it's already analyzed
       setSelectedFile(null);
     } else {
-      // Convert data URL to File only for non-demo images
       fetch(dataUrl)
         .then(res => res.blob())
         .then(blob => {
@@ -47,7 +44,7 @@ const Index = () => {
         });
       setResult(null);
     }
-  }, []); // ✅ Không có dependencies
+  }, []);
 
   const pollStatus = async (jobId: string, maxAttempts = 30) => {
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
@@ -77,10 +74,8 @@ const Index = () => {
     setIsAnalyzing(true);
     
     try {
-      // Convert to base64
       const base64Image = await convertImageToBase64(selectedFile);
       
-      // Upload image
       toast({
         title: "Đang tải ảnh lên...",
         description: "Vui lòng đợi trong giây lát",
@@ -88,7 +83,6 @@ const Index = () => {
       
       const uploadResponse = await uploadImage(base64Image, 10, 40);
       
-      // Poll for results
       toast({
         title: "Đang phân tích...",
         description: "Hệ thống đang xử lý ảnh của bạn",
@@ -115,12 +109,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-cyan-900 to-slate-900 py-8 px-4">
       <div className="container mx-auto max-w-7xl">
         <header className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-            Hệ thống nhận dạng nhân đơn giản với Computer Vision
+          <h1 className="text-3xl md:text-4xl font-bold text-cyan-50 mb-2 drop-shadow-lg">
+            Hệ thống gắn nhãn đơn giản với Computer Vision
           </h1>
+          <div className="h-1 w-32 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto mt-4 rounded-full"></div>
         </header>
 
         <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -128,7 +123,7 @@ const Index = () => {
           <div className="space-y-4">
             {selectedImage ? (
               <div className="space-y-4">
-                <div className="aspect-video relative overflow-hidden rounded-lg bg-card border border-border">
+                <div className="aspect-video relative overflow-hidden rounded-lg bg-slate-800/50 border border-cyan-500/30 shadow-xl shadow-cyan-500/20">
                   <img
                     src={selectedImage}
                     alt="Selected"
@@ -137,7 +132,7 @@ const Index = () => {
                 </div>
                 <Button
                   variant="secondary"
-                  className="w-full"
+                  className="w-full bg-slate-700 hover:bg-slate-600 text-cyan-50 border border-cyan-500/30"
                   onClick={() => {
                     setSelectedImage(null);
                     setSelectedFile(null);
@@ -153,7 +148,7 @@ const Index = () => {
             )}
             
             <Button
-              className="w-full"
+              className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/30"
               size="lg"
               onClick={handleAnalyze}
               disabled={!selectedFile || isAnalyzing}

@@ -11,7 +11,7 @@ const DEMO_RESULT: AnalysisResult = {
   job_id: "demo",
   status: "COMPLETED",
   original_image_url: "/assets/surreal.jpg",
-  detected_image_url: "/assets/detected_surreal.jpg",
+  processed_image_url: "/assets/detected_surreal.jpg",
   labels: [
     { name: "Cat", confidence: 81.8 },
     { name: "Wristwatch", confidence: 65.2 },
@@ -21,26 +21,51 @@ const DEMO_RESULT: AnalysisResult = {
 
 const EXAMPLE_IMAGES = [
   {
-    url: "https://images.unsplash.com/photo-1463936575829-25148e1db1b8?w=300&h=300&fit=crop",
-    isDemoImage: false,
-  },
-  {
-    url: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=300&h=300&fit=crop",
-    isDemoImage: false,
-  },
-  {
     url: "/assets/surreal.jpg",
     isDemoImage: true,
   },
   {
-    url: "https://images.unsplash.com/photo-1470058869958-2a77ade41c02?w=300&h=300&fit=crop",
+    url: "https://images.unsplash.com/photo-1551986782-d0169b3f8fa7?w=300&h=300&fit=crop",
     isDemoImage: false,
   },
   {
     url: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=300&h=300&fit=crop",
     isDemoImage: false,
   },
+  {
+    url: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=300&h=300&fit=crop",
+    isDemoImage: false, // thiên nhiên - núi non
+  },
+  {
+    url: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=300&h=300&fit=crop",
+    isDemoImage: false, // đô thị ban đêm
+  },
+  {
+    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop",
+    isDemoImage: false, // chân dung
+  },
+  {
+    url: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=300&h=300&fit=crop",
+    isDemoImage: false, // biển và núi
+  },
+  {
+    url: "https://images.unsplash.com/photo-1495567720989-cebdbdd97913?w=300&h=300&fit=crop",
+    isDemoImage: false, // kiến trúc
+  },
+  {
+    url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop",
+    isDemoImage: false, // chân dung phụ nữ
+  },
+  {
+    url: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=300&h=300&fit=crop",
+    isDemoImage: false, // phong cảnh băng tuyết
+  },
+  {
+    url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300&h=300&fit=crop",
+    isDemoImage: false, // phong cảnh rừng cây
+  },
 ];
+
 
 export function ExampleImages({ onSelectExample, disabled }: ExampleImagesProps) {
   const handleImageClick = async (url: string, isDemoImage: boolean) => {
@@ -65,7 +90,7 @@ export function ExampleImages({ onSelectExample, disabled }: ExampleImagesProps)
 
   return (
     <div className="mt-12">
-      <h2 className="text-center text-xl font-semibold mb-6">Ảnh ví dụ</h2>
+      <h2 className="text-center text-white text-xl font-semibold mb-6">Ảnh ví dụ</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {EXAMPLE_IMAGES.map((example, index) => (
           <button

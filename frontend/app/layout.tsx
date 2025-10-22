@@ -6,8 +6,8 @@ import { Providers } from "./providers";
 import "./globals.css"; // Thêm dòng này nếu bạn có global CSS
 
 export const metadata = {
-  title: "My App",
-  description: "Next.js app converted from React SPA",
+  title: "Rekognition-SC",
+  description: "Một ứng dụng đơn giản bằng Lambda và API Gateway",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

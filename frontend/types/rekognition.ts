@@ -7,7 +7,7 @@ export interface Label {
     job_id: string;
     status: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'FAILED';
     original_image_url?: string;
-    detected_image_url?: string;
+    processed_image_url?: string;
     labels?: Label[];
     error_message?: string;
   }
