@@ -1,4 +1,5 @@
 # XÂY DỰNG HỆ THỐNG DÁN NHÃN ĐƠN GIẢN VỚI LAMBDA/API GATEWAY
+Link https://rekognition-sc.vercel.app/
 <img width="1464" height="870" alt="image" src="https://github.com/user-attachments/assets/463dc281-6c71-491d-a2ab-650ee9a88189" />
 
 
