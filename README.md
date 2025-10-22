@@ -1,3 +1,6 @@
+# XÂY DỰNG HỆ THỐNG DÁN NHÃN ĐƠN GIẢN VỚI LAMBDA/API GATEWAY
+<img width="1398" height="812" alt="image" src="https://github.com/user-attachments/assets/78ac21e8-4c31-44ce-a34f-43b9b6a7888c" />
+
 ## ⚡ **BƯỚC 1: Deploy Lambda #1 - Upload Function**
 
 ### 1.1. Tạo Function:
